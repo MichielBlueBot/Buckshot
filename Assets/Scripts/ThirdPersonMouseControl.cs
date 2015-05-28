@@ -6,6 +6,7 @@ using UnityStandardAssets.Characters.ThirdPerson;
 [RequireComponent(typeof (ThirdPersonCharacter))]
 public class ThirdPersonMouseControl : MonoBehaviour
 {
+	public Spellcaster m_Caster;			  // A reference to the spellcaster of the player
 	private ThirdPersonCharacter m_Character; // A reference to the ThirdPersonCharacter on the object
 	private Transform m_Cam;                  // A reference to the main camera in the scenes transform
 	private Vector3 m_CamForward;             // The current forward direction of the camera
@@ -51,6 +52,12 @@ public class ThirdPersonMouseControl : MonoBehaviour
 			Physics.Raycast (ray, out hit);
 			Debug.Log ("Move to point: "+hit.point);
 			m_Character.MoveToPoint (hit.point);
+		}
+		if (Input.GetMouseButtonDown(0)) {
+			Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
+			RaycastHit hit;
+			Physics.Raycast (ray, out hit);
+			m_Caster.FireTo(hit.point);
 		}
 	}
 }

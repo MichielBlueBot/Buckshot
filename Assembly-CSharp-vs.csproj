@@ -46,7 +46,10 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\ThirdPersonMouseControl.cs" />
+     <Compile Include="Assets\OnHit.cs" />
+     <Compile Include="Assets\Scripts\SpellCreator.cs" />
+     <Compile Include="Assets\Scripts\ThirdPersonMouseControl.cs" />
+     <Compile Include="Assets\Spellcaster.cs" />
      <None Include="Assets\Standard Assets\Effects\GlassRefraction\Shaders\GlassStainedBumpDistort.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\BlendOneOne.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\NoiseEffectShaderRGB.shader" />

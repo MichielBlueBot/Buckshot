@@ -39,18 +39,11 @@ public class ThirdPersonMouseControl : MonoBehaviour
 		{
 			m_Jump = CrossPlatformInputManager.GetButtonDown("Jump");
 		}
-
-	}
-	
-	
-	// Fixed update is called in sync with physics
-	private void FixedUpdate()
-	{
 		if (Input.GetAxis ("Movement")>0) {
 			Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
 			RaycastHit hit;
 			Physics.Raycast (ray, out hit);
-			Debug.Log ("Move to point: "+hit.point);
+			//Debug.Log ("Move to point: "+hit.point);
 			m_Character.MoveToPoint (hit.point);
 		}
 		if (Input.GetMouseButtonDown(0)) {

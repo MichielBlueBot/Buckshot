@@ -40,22 +40,13 @@ public class NetworkPlayer : Photon.MonoBehaviour {
 			// Update the position and rotation
 			playerCharacter.transform.position = Vector3.Lerp (playerCharacter.transform.position, position, Time.deltaTime*lerpSmoothing);
 			playerCharacter.transform.rotation = Quaternion.Lerp (playerCharacter.transform.rotation, rotation, Time.deltaTime*lerpSmoothing);
-			//TODO FIX THIS
-			//TODO FIX THIS
-			//TODO FIX THIS
-			//TODO >>>>>>>>>>>
 			// Update the animator
-			/*
 			Vector3 movementVector = position-playerCharacter.transform.position;
-			movementVector.Normalize();
-			playerCharacter.transform.FindChild("AIThirdPersonController").GetComponent<UnityStandardAssets.Characters.ThirdPerson.ThirdPersonCharacter>().RemoteUpdateAnimator(movementVector);
-			*/
-			//TODO <<<<<<<<<<<
-			//TODO FIX THIS
-			//TODO FIX THIS
-			//TODO FIX THIS
-
-
+			// This check is required to not get jerky movement with the idle animation.
+			if(movementVector.magnitude<=0.15f){
+				movementVector = new Vector3(0,0,0);
+			}
+			playerCharacter.GetComponent<UnityStandardAssets.Characters.ThirdPerson.ThirdPersonCharacter>().RemoteUpdateAnimator(movementVector);
 			yield return null;
 		}
 	}
